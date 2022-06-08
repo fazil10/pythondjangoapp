@@ -1,0 +1,23 @@
+from lib2to3.pygram import Symbols
+import time
+from unittest import result
+from urllib import response
+import requests as request
+import os
+
+api_key = os.getenv('ALPHAVANTAGE_API_KEY')
+url = 'https://www.alphavantage.co/query?function=OVERVIEW&symbol={}&apikey={}'
+symbol = ['as','sa','sadsa','asdas']
+results = []
+
+start = time.time()
+
+for symbol in symbol:
+    print('working on symbols {}'.format(symbol))
+    response = request.get(url.format(symbol,api_key))
+    results.append(response.json())
+end = time.time()
+total_time = end -start
+print("took {} second make {} api calls".format(total_time,len(symbol)))
+print('great work')
+    
